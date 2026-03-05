@@ -1,0 +1,112 @@
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+
+local player = Players.LocalPlayer
+local backpack = player:WaitForChild("Backpack")
+
+-- Copy Flight Tools
+for _,v in pairs(workspace:GetChildren()) do
+    local fh = v:FindFirstChild("FlightHandler")
+    local tool = v:FindFirstChild("Flight")
+
+    if fh then
+        fh:Clone().Parent = backpack
+    end
+
+    if tool then
+        tool:Clone().Parent = backpack
+    end
+end
+
+-- GUI
+local gui = Instance.new("ScreenGui")
+gui.Parent = player.PlayerGui
+gui.ResetOnSpawn = false
+
+-- Main Frame
+local frame = Instance.new("Frame")
+frame.Parent = gui
+frame.Size = UDim2.new(0,0,0,0)
+frame.Position = UDim2.new(0.5,0,0.35,0)
+frame.AnchorPoint = Vector2.new(0.5,0.5)
+frame.BackgroundColor3 = Color3.fromRGB(25,25,35)
+
+Instance.new("UICorner",frame).CornerRadius = UDim.new(0,20)
+
+-- Stylish Gradient Background
+local bgGradient = Instance.new("UIGradient")
+bgGradient.Parent = frame
+bgGradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(20,20,40)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(60,0,120)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0,180,200))
+}
+bgGradient.Rotation = 45
+
+-- Glow Border
+local stroke = Instance.new("UIStroke")
+stroke.Parent = frame
+stroke.Color = Color3.fromRGB(0,255,255)
+stroke.Thickness = 3
+
+-- Circle Image
+local image = Instance.new("ImageLabel")
+image.Parent = frame
+image.BackgroundTransparency = 1
+image.Size = UDim2.new(0,90,0,90)
+image.Position = UDim2.new(0.5,-45,0,-45)
+image.Image = "rbxassetid://80251760127656"
+
+local circle = Instance.new("UICorner")
+circle.Parent = image
+circle.CornerRadius = UDim.new(1,0)
+
+-- Glow Ring
+local ring = Instance.new("UIStroke")
+ring.Parent = image
+ring.Color = Color3.fromRGB(0,255,200)
+ring.Thickness = 3
+
+-- Text
+local text = Instance.new("TextLabel")
+text.Parent = frame
+text.BackgroundTransparency = 1
+text.Position = UDim2.new(0,10,0,60)
+text.Size = UDim2.new(1,-20,1,-70)
+text.Font = Enum.Font.GothamBold
+text.TextScaled = true
+text.TextColor3 = Color3.fromRGB(255,255,255)
+text.Text = "You Got A Flight Cmd\nBy Seo_Joon Developer"
+
+-- Gradient Text
+local gradient = Instance.new("UIGradient")
+gradient.Parent = text
+gradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0,Color3.fromRGB(0,255,255)),
+    ColorSequenceKeypoint.new(1,Color3.fromRGB(170,0,255))
+}
+
+-- Popup Animation
+TweenService:Create(
+    frame,
+    TweenInfo.new(0.6,Enum.EasingStyle.Back,Enum.EasingDirection.Out),
+    {Size = UDim2.new(0,380,0,160)}
+):Play()
+
+-- Image floating animation
+TweenService:Create(
+    image,
+    TweenInfo.new(2,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut,-1,true),
+    {Position = UDim2.new(0.5,-45,0,-55)}
+):Play()
+
+task.wait(6)
+
+TweenService:Create(
+    frame,
+    TweenInfo.new(0.5),
+    {Size = UDim2.new(0,0,0,0)}
+):Play()
+
+task.wait(0.5)
+gui:Destroy()
