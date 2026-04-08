@@ -33,7 +33,7 @@ frame.BackgroundColor3 = Color3.fromRGB(25,25,35)
 
 Instance.new("UICorner",frame).CornerRadius = UDim.new(0,20)
 
--- Stylish Gradient Background
+-- Gradient Background
 local bgGradient = Instance.new("UIGradient")
 bgGradient.Parent = frame
 bgGradient.Color = ColorSequence.new{
@@ -49,14 +49,15 @@ stroke.Parent = frame
 stroke.Color = Color3.fromRGB(0,255,255)
 stroke.Thickness = 3
 
--- Circle Image
+-- Circle Image (YOUR ASSET ID FIXED)
 local image = Instance.new("ImageLabel")
 image.Parent = frame
 image.BackgroundTransparency = 1
 image.Size = UDim2.new(0,90,0,90)
 image.Position = UDim2.new(0.5,-45,0,-45)
-image.Image = "rbxassetid://80251760127656"
+image.Image = "rbxassetid://116041702832608"
 
+-- Make it perfectly round
 local circle = Instance.new("UICorner")
 circle.Parent = image
 circle.CornerRadius = UDim.new(1,0)
@@ -93,7 +94,7 @@ TweenService:Create(
     {Size = UDim2.new(0,380,0,160)}
 ):Play()
 
--- Image floating animation
+-- Floating Animation
 TweenService:Create(
     image,
     TweenInfo.new(2,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut,-1,true),
