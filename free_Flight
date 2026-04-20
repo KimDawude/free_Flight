@@ -23,6 +23,13 @@ local gui = Instance.new("ScreenGui")
 gui.Parent = player.PlayerGui
 gui.ResetOnSpawn = false
 
+-- 🎧 SOUND (ADDED HERE)
+local sound = Instance.new("Sound")
+sound.Parent = gui
+sound.SoundId = "rbxassetid://452267918"
+sound.Volume = 2
+sound:Play()
+
 -- Main Frame
 local frame = Instance.new("Frame")
 frame.Parent = gui
@@ -49,7 +56,7 @@ stroke.Parent = frame
 stroke.Color = Color3.fromRGB(0,255,255)
 stroke.Thickness = 3
 
--- Circle Image (YOUR ASSET ID FIXED)
+-- Image
 local image = Instance.new("ImageLabel")
 image.Parent = frame
 image.BackgroundTransparency = 1
@@ -57,12 +64,8 @@ image.Size = UDim2.new(0,90,0,90)
 image.Position = UDim2.new(0.5,-45,0,-45)
 image.Image = "rbxassetid://116041702832608"
 
--- Make it perfectly round
-local circle = Instance.new("UICorner")
-circle.Parent = image
-circle.CornerRadius = UDim.new(1,0)
+Instance.new("UICorner", image).CornerRadius = UDim.new(1,0)
 
--- Glow Ring
 local ring = Instance.new("UIStroke")
 ring.Parent = image
 ring.Color = Color3.fromRGB(0,255,200)
@@ -79,7 +82,6 @@ text.TextScaled = true
 text.TextColor3 = Color3.fromRGB(255,255,255)
 text.Text = "You Got A Flight Tool\nBy Seo_Joon Developer"
 
--- Gradient Text
 local gradient = Instance.new("UIGradient")
 gradient.Parent = text
 gradient.Color = ColorSequence.new{
@@ -87,14 +89,13 @@ gradient.Color = ColorSequence.new{
     ColorSequenceKeypoint.new(1,Color3.fromRGB(170,0,255))
 }
 
--- Popup Animation
+-- Animation
 TweenService:Create(
     frame,
     TweenInfo.new(0.6,Enum.EasingStyle.Back,Enum.EasingDirection.Out),
     {Size = UDim2.new(0,380,0,160)}
 ):Play()
 
--- Floating Animation
 TweenService:Create(
     image,
     TweenInfo.new(2,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut,-1,true),
