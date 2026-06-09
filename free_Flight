@@ -62,7 +62,7 @@ image.Parent = frame
 image.BackgroundTransparency = 1
 image.Size = UDim2.new(0,90,0,90)
 image.Position = UDim2.new(0.5,-45,0,-45)
-image.Image = "rbxassetid://116041702832608"
+image.Image = "rbxassetid://91333748176705"
 
 Instance.new("UICorner", image).CornerRadius = UDim.new(1,0)
 
@@ -80,7 +80,7 @@ text.Size = UDim2.new(1,-20,1,-70)
 text.Font = Enum.Font.GothamBold
 text.TextScaled = true
 text.TextColor3 = Color3.fromRGB(255,255,255)
-text.Text = "You Got A Flight Tool\nBy Seo_Joon Developer"
+text.Text = "You Got A Flight Tool\nBy GyuGirl Developer"
 
 local gradient = Instance.new("UIGradient")
 gradient.Parent = text
