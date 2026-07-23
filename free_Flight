@@ -62,7 +62,7 @@ image.Parent = frame
 image.BackgroundTransparency = 1
 image.Size = UDim2.new(0,90,0,90)
 image.Position = UDim2.new(0.5,-45,0,-45)
-image.Image = "rbxassetid://91333748176705"
+image.Image = "rbxassetid://99721587020698"
 
 Instance.new("UICorner", image).CornerRadius = UDim.new(1,0)
 
